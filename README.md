@@ -39,3 +39,7 @@ lignes de code afin de l’enrichir. Vous allez donc devoir apprendre rapidement
 velle, cas typique d’un nouvel embauché.
 2.  Vous familiarisez avec une architecture objet « complexe » (c.-à-d. avec plus de
 trois classe
+
+Liens Utiles : 
+http://docplayer.fr/3597295-Heritage-en-java-calculatrice-sdc.html
+https://www.yumpu.com/fr/document/view/16670356/heritage-en-java-calculatrice-sdc-limsi
