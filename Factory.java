@@ -21,6 +21,7 @@ public class Factory {
 		this.list.add("SubOperation");
 		this.list.add("DivOperation");
 		this.list.add("MulOperation");
+		this.list.add("AbsOperation");
 	}
 
 	public Symbol[] registered() throws InternalError {
@@ -28,7 +29,6 @@ public class Factory {
 
 		for (String objectName : this.list) {
 			objectName = "sdc." + objectName;
-			System.out.println(objectName);
 			s.add(this.createInstance(objectName));
 		}
 
@@ -37,8 +37,8 @@ public class Factory {
 
 	private Symbol createInstance(String className) throws InternalError {
 		try {
-			Class cl = Class.forName(className);
-			java.lang.reflect.Constructor co = cl.getConstructor();
+			Class<?> cl = Class.forName(className);
+			Constructor<?> co = cl.getConstructor();
 			return (Symbol) co.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();

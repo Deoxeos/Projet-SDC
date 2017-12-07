@@ -6,9 +6,9 @@ public class RationnalValue extends Value {
 	private int denominateur;
 
 	public String toString() {
-		return this.numerateur + "#" + this.denominateur; 
+		return this.numerateur + "#" + this.denominateur;
 	}
-	
+
 	@Override
 	public boolean parse(String s) {
 
@@ -82,8 +82,24 @@ public class RationnalValue extends Value {
 
 	@Override
 	public Value abs() {
-		// TODO Auto-generated method stub
-		return null;
+
+		int absNume = 0;
+		int absDeno = 1;
+
+		if (this.numerateur < 0) {
+			absNume = this.numerateur * -1;
+		} else {
+			absNume = this.numerateur;
+		}
+
+		if (this.denominateur < 0) {
+			absDeno = this.denominateur * -1;
+		} else {
+			absDeno = this.denominateur;
+		}
+
+		return new RationnalValue(absNume, absDeno);
+
 	}
 
 	@Override
@@ -110,9 +126,9 @@ public class RationnalValue extends Value {
 		}
 		return a;
 	}
-	
+
 	public RationnalValue() {
-		this.numerateur= 0; 
+		this.numerateur = 0;
 		this.denominateur = 1;
 	}
 

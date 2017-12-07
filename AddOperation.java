@@ -1,7 +1,5 @@
 package sdc;
 
-import java.util.Stack;
-
 public class AddOperation extends BinaryOperation {
 
     public boolean parse(String s) {
