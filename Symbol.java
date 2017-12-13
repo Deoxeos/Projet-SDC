@@ -16,4 +16,5 @@ public interface Symbol {
     public void execute(Stack<Value> s) throws ShutdownException, IncompatibleTypeException;
 
 	
+	
 }

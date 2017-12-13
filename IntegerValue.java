@@ -1,6 +1,8 @@
 package sdc;
 
-public class IntegerValue extends Value {
+import java.util.Stack;
+
+public class IntegerValue extends NumericalValue {
 
 	private int value;
 
@@ -25,7 +27,7 @@ public class IntegerValue extends Value {
 		return "" + this.value;
 	}
 
-	public Value add(Value v) throws IncompatibleTypeException {
+	public NumericalValue add(NumericalValue v) throws IncompatibleTypeException {
 
 		if (!(v instanceof IntegerValue)) {
 			throw new IncompatibleTypeException();
@@ -34,7 +36,7 @@ public class IntegerValue extends Value {
 		return new IntegerValue(((IntegerValue) v).value + this.value);
 	}
 
-	public Value multiply(Value v) throws IncompatibleTypeException {
+	public NumericalValue multiply(NumericalValue v) throws IncompatibleTypeException {
 
 		if (!(v instanceof IntegerValue)) {
 			throw new IncompatibleTypeException();
@@ -43,7 +45,7 @@ public class IntegerValue extends Value {
 		return new IntegerValue(((IntegerValue) v).value * this.value);
 	}
 
-	public Value divide(Value v) throws IncompatibleTypeException {
+	public NumericalValue divide(NumericalValue v) throws IncompatibleTypeException {
 
 		if (!(v instanceof IntegerValue)) {
 			throw new IncompatibleTypeException();
@@ -52,7 +54,7 @@ public class IntegerValue extends Value {
 		return new IntegerValue(((IntegerValue) v).value / this.value);
 	}
 
-	public Value substract(Value v) throws IncompatibleTypeException {
+	public NumericalValue substract(NumericalValue v) throws IncompatibleTypeException {
 
 		if (!(v instanceof IntegerValue)) {
 			throw new IncompatibleTypeException();
@@ -61,7 +63,7 @@ public class IntegerValue extends Value {
 		return new IntegerValue(((IntegerValue) v).value - this.value);
 	}
 
-	public Value abs() {
+	public NumericalValue abs() {
 		// attention à bien créer une nouvelle instance
 		if (this.value < 0) {
 			return new IntegerValue(-1 * this.value);
@@ -69,5 +71,7 @@ public class IntegerValue extends Value {
 			return new IntegerValue(this.value);
 		}
 	}
+
+	
 
 }

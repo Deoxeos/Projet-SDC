@@ -2,20 +2,13 @@ package sdc;
 
 import java.util.Stack;
 
-public abstract class Value implements Symbol {
+public abstract class Value implements Symbol{
 
+	
+	public abstract boolean parse(String s); 
+	
+	
 	public void execute(Stack<Value> s) {
-		s.push(this);
+		s.push(this); 
 	}
-
-	public abstract Value multiply(Value v) throws IncompatibleTypeException;
-
-	public abstract Value divide(Value v) throws IncompatibleTypeException;
-
-	public abstract Value add(Value v) throws IncompatibleTypeException;
-
-	public abstract Value substract(Value v) throws IncompatibleTypeException;
-
-	public abstract Value abs();
-
 }

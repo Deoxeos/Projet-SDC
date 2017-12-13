@@ -1,6 +1,7 @@
 package sdc;
 
-public class RationnalValue extends Value {
+
+public class RationnalValue extends NumericalValue {
 
 	private int numerateur;
 	private int denominateur;
@@ -33,7 +34,7 @@ public class RationnalValue extends Value {
 	}
 
 	@Override
-	public Value divide(Value v) throws IncompatibleTypeException {
+	public NumericalValue divide(NumericalValue v) throws IncompatibleTypeException {
 		if (!(v instanceof RationnalValue)) {
 			throw new IncompatibleTypeException();
 		}
@@ -49,7 +50,7 @@ public class RationnalValue extends Value {
 	}
 
 	@Override
-	public Value add(Value v) throws IncompatibleTypeException {
+	public NumericalValue add(NumericalValue v) throws IncompatibleTypeException {
 
 		if (!(v instanceof RationnalValue)) {
 			throw new IncompatibleTypeException();
@@ -65,7 +66,7 @@ public class RationnalValue extends Value {
 	}
 
 	@Override
-	public Value substract(Value v) throws IncompatibleTypeException {
+	public NumericalValue substract(NumericalValue v) throws IncompatibleTypeException {
 		if (!(v instanceof RationnalValue)) {
 			throw new IncompatibleTypeException();
 		}
@@ -81,7 +82,7 @@ public class RationnalValue extends Value {
 	}
 
 	@Override
-	public Value abs() {
+	public NumericalValue abs() {
 
 		int absNume = 0;
 		int absDeno = 1;
@@ -103,7 +104,7 @@ public class RationnalValue extends Value {
 	}
 
 	@Override
-	public Value multiply(Value v) throws IncompatibleTypeException {
+	public NumericalValue multiply(NumericalValue v) throws IncompatibleTypeException {
 		if (!(v instanceof RationnalValue)) {
 			throw new IncompatibleTypeException();
 		}
@@ -131,5 +132,4 @@ public class RationnalValue extends Value {
 		this.numerateur = 0;
 		this.denominateur = 1;
 	}
-
 }

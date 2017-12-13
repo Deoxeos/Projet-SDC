@@ -1,8 +1,5 @@
 package sdc;
 
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Stack;
 import java.util.EmptyStackException;
@@ -24,6 +21,10 @@ public class SDC {
 		// parse the line to execute
 		// tokens are separated by a space
 		StringTokenizer st = new StringTokenizer(line);
+		if(line.contains("=>")){
+			
+		}
+		
 		if (line.equals("view")) {
 			view();
 		} else {
@@ -39,6 +40,7 @@ public class SDC {
 
 					if (s.parse(token)) {
 						found = true;
+						@SuppressWarnings("unchecked")
 						Stack<Value> oldStack = (Stack<Value>) stack.clone();
 						try {
 							s.execute(this.stack);
