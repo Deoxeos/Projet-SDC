@@ -1,7 +1,5 @@
 package sdc;
 
-import java.util.Stack;
-
 public class IntegerValue extends NumericalValue {
 
 	private int value;
@@ -70,6 +68,33 @@ public class IntegerValue extends NumericalValue {
 		} else {
 			return new IntegerValue(this.value);
 		}
+	}
+
+	@Override
+	public BooleanValue superior(NumericalValue v) throws IncompatibleTypeException {
+		if (!(v instanceof IntegerValue)) {
+			throw new IncompatibleTypeException();
+		}
+		
+		return new BooleanValue(this.value > ((IntegerValue) v).value);
+	}
+
+	@Override
+	public BooleanValue inferior(NumericalValue v) throws IncompatibleTypeException {
+		if (!(v instanceof IntegerValue)) {
+			throw new IncompatibleTypeException();
+		}
+		
+		return new BooleanValue(this.value < ((IntegerValue) v).value);
+	}
+
+	@Override
+	public BooleanValue equality(NumericalValue v) throws IncompatibleTypeException {
+		if (!(v instanceof IntegerValue)) {
+			throw new IncompatibleTypeException();
+		}
+		
+		return new BooleanValue(this.value == ((IntegerValue) v).value);
 	}
 
 	

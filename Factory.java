@@ -22,6 +22,10 @@ public class Factory {
 		this.list.add("DivOperation");
 		this.list.add("MulOperation");
 		this.list.add("AbsOperation");
+	
+		this.list.add("etLogique"); 
+		this.list.add("ouLogique"); 
+		this.list.add("negLogique"); 
 	}
 
 	public Symbol[] registered() throws InternalError {
