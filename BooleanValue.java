@@ -3,6 +3,10 @@ package sdc;
 public class BooleanValue extends Value {
 
 	private boolean value;
+	
+	public BooleanValue() {
+		this.value = false;
+	}
 
 	public BooleanValue(boolean b) {
 		this.value = b;
@@ -17,14 +21,12 @@ public class BooleanValue extends Value {
 	}
 
 	public BooleanValue negLogique() throws IncompatibleTypeException {
-		if (this.value) {
-			return new BooleanValue(false);
-		} else {
-			return new BooleanValue(true);
-		}
-
+		return new BooleanValue(!this.value);
 	}
-
+	
+	public String toString() {
+		return this.value + "";
+	}
 	public boolean parse(String s) {
 
 		try {

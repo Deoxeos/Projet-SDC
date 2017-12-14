@@ -135,19 +135,31 @@ public class RationnalValue extends NumericalValue {
 
 	@Override
 	public BooleanValue superior(NumericalValue v) throws IncompatibleTypeException {
-		// TODO Auto-generated method stub
-		return null;
+		if (!(v instanceof NumericalValue)) {
+			throw new IncompatibleTypeException();
+		}		
+		
+		float v1 = (float)((RationnalValue) v).numerateur / (float)((RationnalValue) v).denominateur; 
+		float v2 = (float)((RationnalValue) this).numerateur / (float)((RationnalValue) this).denominateur; 
+		
+		return new BooleanValue(v2 > v1);
 	}
 
 	@Override
 	public BooleanValue inferior(NumericalValue v) throws IncompatibleTypeException {
-		// TODO Auto-generated method stub
-		return null;
+		if (!(v instanceof NumericalValue)) {
+			throw new IncompatibleTypeException();
+		}
+		
+		float v1 = (float)((RationnalValue) v).numerateur / (float)((RationnalValue) v).denominateur; 
+		float v2 = (float)((RationnalValue) this).numerateur / (float)((RationnalValue) this).denominateur; 
+		
+		return new BooleanValue(v2 < v1);
 	}
 
 	@Override
 	public BooleanValue equality(NumericalValue v) throws IncompatibleTypeException {
-		if (!(v instanceof IntegerValue)) {
+		if (!(v instanceof NumericalValue)) {
 			throw new IncompatibleTypeException();
 		}
 		

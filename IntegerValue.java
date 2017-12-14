@@ -76,7 +76,7 @@ public class IntegerValue extends NumericalValue {
 			throw new IncompatibleTypeException();
 		}
 		
-		return new BooleanValue(this.value > ((IntegerValue) v).value);
+		return new BooleanValue(this.value < ((IntegerValue) v).value);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class IntegerValue extends NumericalValue {
 			throw new IncompatibleTypeException();
 		}
 		
-		return new BooleanValue(this.value < ((IntegerValue) v).value);
+		return new BooleanValue(this.value > ((IntegerValue) v).value);
 	}
 
 	@Override

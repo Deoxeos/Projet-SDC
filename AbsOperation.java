@@ -20,5 +20,4 @@ public class AbsOperation extends UnaryOperation {
 		return nv1.abs();
 
 	}
-
 }

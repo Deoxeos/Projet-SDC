@@ -1,12 +1,14 @@
 package sdc;
 
-public class MulOperation extends BinaryOperation {
+public class EqualityOperation extends BinaryOperation {
 
+	@Override
 	public boolean parse(String s) {
-		return s.equals("*");
+		return s.equals("=");
 	}
 
-	public NumericalValue compute(Value v1, Value v2) throws IncompatibleTypeException {
+	@Override
+	public Value compute(Value v1, Value v2) throws IncompatibleTypeException {
 		NumericalValue nv1;
 		NumericalValue nv2;
 
@@ -16,6 +18,7 @@ public class MulOperation extends BinaryOperation {
 		} catch (Exception e) {
 			throw new IncompatibleTypeException();
 		}
-		return nv1.multiply(nv2);
+		return nv1.equality(nv2);
 	}
+
 }

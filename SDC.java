@@ -8,6 +8,7 @@ public class SDC {
 
 	private Factory factory;
 	private Stack<Value> stack;
+	 
 
 	public SDC() {
 		this.factory = new Factory();

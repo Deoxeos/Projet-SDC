@@ -13,7 +13,8 @@ public class Factory {
 		// add all types or operation here
 		this.list.add("IntegerValue");
 		this.list.add("RationnalValue");
-
+		this.list.add("AffectValue");
+		
 		this.list.add("QuitSymbol");
 		this.list.add("ClearSymbol");
 
@@ -23,9 +24,15 @@ public class Factory {
 		this.list.add("MulOperation");
 		this.list.add("AbsOperation");
 	
-		this.list.add("etLogique"); 
-		this.list.add("ouLogique"); 
-		this.list.add("negLogique"); 
+		this.list.add("EtLogique"); 
+		this.list.add("OuLogique"); 
+		this.list.add("NegLogique"); 
+		
+		this.list.add("SuperiorOperation"); 
+		this.list.add("InferiorOperation");
+		this.list.add("EqualityOperation");
+		
+		
 	}
 
 	public Symbol[] registered() throws InternalError {
