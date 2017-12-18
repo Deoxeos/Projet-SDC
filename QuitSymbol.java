@@ -1,6 +1,10 @@
-package sdc;
+package Symbol;
 
 import java.util.Stack;
+
+import Exception.IncompatibleTypeException;
+import Exception.ShutdownException;
+import Value.Value;
 
 public class QuitSymbol implements Symbol {
     
