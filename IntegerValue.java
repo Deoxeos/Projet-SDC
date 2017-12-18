@@ -1,4 +1,6 @@
-package sdc;
+package Value;
+
+import Exception.IncompatibleTypeException;
 
 public class IntegerValue extends NumericalValue {
 
@@ -57,7 +59,7 @@ public class IntegerValue extends NumericalValue {
 		if (!(v instanceof IntegerValue)) {
 			throw new IncompatibleTypeException();
 		}
-
+		
 		return new IntegerValue(((IntegerValue) v).value - this.value);
 	}
 

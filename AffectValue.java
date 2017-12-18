@@ -1,4 +1,6 @@
-package sdc;
+package Value;
+
+import Exception.SymbolNotFoundException;
 
 public class AffectValue extends Value {
 

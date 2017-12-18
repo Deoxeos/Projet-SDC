@@ -1,4 +1,6 @@
-package sdc;
+package Value;
+
+import Exception.IncompatibleTypeException;
 
 public class BooleanValue extends Value {
 

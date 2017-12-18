@@ -1,4 +1,6 @@
-package sdc;
+package Value;
+
+import Exception.IncompatibleTypeException;
 
 public abstract class NumericalValue extends Value {
 

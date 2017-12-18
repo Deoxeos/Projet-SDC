@@ -1,6 +1,8 @@
-package sdc;
+package Value;
 
 import java.util.Stack;
+
+import Symbol.Symbol;
 
 public abstract class Value implements Symbol{
 
