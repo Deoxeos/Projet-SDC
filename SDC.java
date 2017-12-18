@@ -42,10 +42,9 @@ public class SDC {
 					if (token.startsWith("$")) {
 						
 						Integer id = getId(token); 
-						if(id == 0) throw new VariableException("Illegal operation: unknown variable. Ignore last command line");
 						
-						System.out.println(id);
-						
+						if(id == -1) throw new VariableException("Illegal operation: unknown variable. Ignore last command line");
+												
 						token = this.variables.get(id).toString();
 
 
@@ -107,7 +106,7 @@ public class SDC {
 	}
 
 	private int getId(String line) {
-		int id = 0;
+		int id = -1;
 
 		for (int i = 0; i < variables.size(); i++) {
 			if (variables.get(i).compareNameSet(line))
