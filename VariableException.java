@@ -1,5 +1,6 @@
-package sdc;
+package Exception;
 
+@SuppressWarnings("serial")
 public class VariableException extends ProcessingException{
 
 	public VariableException() {

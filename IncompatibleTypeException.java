@@ -1,5 +1,6 @@
-package sdc;
+package Exception;
 
+@SuppressWarnings("serial")
 public class IncompatibleTypeException extends ProcessingException {
 
     public IncompatibleTypeException() {

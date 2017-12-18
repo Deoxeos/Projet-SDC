@@ -1,8 +1,9 @@
-package sdc;
+package Exception;
 
+@SuppressWarnings("serial")
 public class ShutdownException extends Exception {
     
-    ShutdownException() {
+    public ShutdownException() {
 	super();
     }
     
