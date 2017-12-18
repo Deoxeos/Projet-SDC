@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.HashSet;
 
 public class SDC {
 
@@ -25,21 +24,10 @@ public class SDC {
 		// parse the line to execute
 		// tokens are separated by a space
 
-		System.out.println(line);
-
-		if (line.startsWith("$")) {
-			int idVar = getId(line);
-			line = this.variables.get(idVar).toString();
-		}
-
 		StringTokenizer st = new StringTokenizer(line);
 
 		if (line.equals("viewv")) {
 			viewv();
-		}
-
-		if (line.equals("view")) {
-			view();
 		} else {
 
 			while (st.hasMoreTokens()) {
@@ -50,6 +38,12 @@ public class SDC {
 				// try every registered symbole
 				boolean found = false;
 				for (Symbol s : this.factory.registered()) {
+
+					if (token.startsWith("$")) {
+
+						token = this.variables.get(getId(token)).toString();
+
+					}
 
 					if (s.parse(token)) {
 						found = true;
@@ -80,14 +74,15 @@ public class SDC {
 					AffectValue testor = new AffectValue("=>");
 					Value current;
 					Value currentBefore;
-					if (!stack.isEmpty()) {
+					if (!stack.isEmpty() && stack.size() > 1) {
 						current = stack.pop();
 						currentBefore = stack.pop();
 
 						if (current.toString().equals("=>")) {
 							addVar = !isAlreadyIn(token);
-							if (addVar)
+							if (addVar) {
 								variables.add(new Variable(token, currentBefore));
+							}
 						} else {
 							System.out.println(current.equals(testor));
 							throw new SymbolNotFoundException("the token " + token + " has not been recognized. Abort");
@@ -116,13 +111,14 @@ public class SDC {
 		return id;
 	}
 
-	public void view() {
-
-		for (int i = 0; i < stack.size(); i++) {
-			System.out.println(((stack.size() - i) + " ----> " + stack.get(i)));
-		}
-
-	}
+	/*
+	 * public void view() {
+	 * 
+	 * for (int i = 0; i < stack.size(); i++) {
+	 * System.out.println(((stack.size() - i) + " ----> " + stack.get(i))); }
+	 * 
+	 * }
+	 */
 
 	public void viewv() {
 		for (Variable current : this.variables) {

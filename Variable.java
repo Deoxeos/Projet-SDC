@@ -17,8 +17,12 @@ public class Variable {
 		return value.toString();
 	}
 
+	public boolean compareValue(Value current) {
+		return this.value.equals(current);
+	}
+	
 	public boolean compareName(String current) {
-		return this.nomVar.equals("$" + current);
+		return this.nomVar.substring(1,this.nomVar.length()).equals(current);
 	}
 	
 	public boolean compareNameSet(String current) {
