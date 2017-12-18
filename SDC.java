@@ -40,8 +40,14 @@ public class SDC {
 				for (Symbol s : this.factory.registered()) {
 
 					if (token.startsWith("$")) {
+						
+						Integer id = getId(token); 
+						if(id == 0) throw new VariableException("Illegal operation: unknown variable. Ignore last command line");
+						
+						System.out.println(id);
+						
+						token = this.variables.get(id).toString();
 
-						token = this.variables.get(getId(token)).toString();
 
 					}
 
@@ -110,15 +116,6 @@ public class SDC {
 
 		return id;
 	}
-
-	/*
-	 * public void view() {
-	 * 
-	 * for (int i = 0; i < stack.size(); i++) {
-	 * System.out.println(((stack.size() - i) + " ----> " + stack.get(i))); }
-	 * 
-	 * }
-	 */
 
 	public void viewv() {
 		for (Variable current : this.variables) {
