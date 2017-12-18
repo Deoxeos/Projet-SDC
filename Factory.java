@@ -14,6 +14,7 @@ public class Factory {
 		this.list.add("IntegerValue");
 		this.list.add("RationnalValue");
 		this.list.add("AffectValue");
+		this.list.add("BooleanValue");
 
 		this.list.add("View");
 		
