@@ -1,6 +1,10 @@
 package sdc;
 
 import java.io.InputStreamReader;
+
+import Exception.ProcessingException;
+import Exception.ShutdownException;
+
 import java.io.BufferedReader;
 
 public final class SDCTextUI {

@@ -1,5 +1,7 @@
 package sdc;
 
+import Value.Value;
+
 public class Variable {
 
 	private String nomVar;
@@ -22,15 +24,14 @@ public class Variable {
 	}
 	
 	public boolean compareName(String current) {
-		return this.nomVar.substring(1,this.nomVar.length()).equals(current);
+		return this.nomVar.substring(1,this.nomVar.length()).toLowerCase().equals(current.toLowerCase());
 	}
 	
 	public boolean compareNameSet(String current) {
-		return this.nomVar.equals(current);
+		return this.nomVar.toLowerCase().equals(current.toLowerCase());
 	}
 	
 	public Value giveValue() {
 		return this.value; 
 	}
-
 }

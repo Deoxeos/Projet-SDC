@@ -3,6 +3,9 @@ package sdc;
 import java.lang.reflect.*;
 import java.util.ArrayList;
 
+import Exception.InternalError;
+import Symbol.Symbol; 
+
 public class Factory {
 
 	private ArrayList<String> list;
@@ -11,29 +14,26 @@ public class Factory {
 		this.list = new ArrayList<String>();
 
 		// add all types or operation here
-		this.list.add("IntegerValue");
-		this.list.add("RationnalValue");
-		this.list.add("AffectValue");
-		this.list.add("BooleanValue");
-
-		this.list.add("View");
+		this.list.add("Value.IntegerValue");
+		this.list.add("Value.RationnalValue");
+		this.list.add("Value.AffectValue");
+		this.list.add("Value.BooleanValue");
 		
-		this.list.add("QuitSymbol");
-		this.list.add("ClearSymbol");
+		this.list.add("Symbol.ViewSymbol");
+		this.list.add("Symbol.QuitSymbol");
+		this.list.add("Symbol.ClearSymbol");
 
-		this.list.add("AddOperation");
-		this.list.add("SubOperation");
-		this.list.add("DivOperation");
-		this.list.add("MulOperation");
-		this.list.add("AbsOperation");
-	
-		this.list.add("EtLogique"); 
-		this.list.add("OuLogique"); 
-		this.list.add("NegLogique"); 
-		
-		this.list.add("SuperiorOperation"); 
-		this.list.add("InferiorOperation");
-		this.list.add("EqualityOperation");
+		this.list.add("Operation.AddOperation");
+		this.list.add("Operation.SubOperation");
+		this.list.add("Operation.DivOperation");
+		this.list.add("Operation.MulOperation");
+		this.list.add("Operation.AbsOperation");
+		this.list.add("Operation.EtLogique"); 
+		this.list.add("Operation.OuLogique"); 
+		this.list.add("Operation.NegLogique"); 
+		this.list.add("Operation.SuperiorOperation"); 
+		this.list.add("Operation.InferiorOperation");
+		this.list.add("Operation.EqualityOperation");
 		
 		
 	}
@@ -42,7 +42,6 @@ public class Factory {
 		ArrayList<Symbol> s = new ArrayList<Symbol>();
 
 		for (String objectName : this.list) {
-			objectName = "sdc." + objectName;
 			s.add(this.createInstance(objectName));
 		}
 
