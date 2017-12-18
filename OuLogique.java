@@ -1,4 +1,8 @@
-package sdc;
+package Operation;
+
+import Exception.IncompatibleTypeException;
+import Value.BooleanValue;
+import Value.Value;
 
 public class OuLogique extends BinaryOperation {
 

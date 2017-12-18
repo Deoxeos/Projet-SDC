@@ -1,5 +1,8 @@
-package sdc;
+package Operation;
 
+import Exception.IncompatibleTypeException;
+import Value.NumericalValue;
+import Value.Value;
 
 public class AddOperation extends BinaryOperation {
 

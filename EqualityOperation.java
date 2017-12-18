@@ -1,4 +1,8 @@
-package sdc;
+package Operation;
+
+import Exception.IncompatibleTypeException;
+import Value.NumericalValue;
+import Value.Value;
 
 public class EqualityOperation extends BinaryOperation {
 

@@ -1,6 +1,10 @@
-package sdc;
+package Operation;
 
 import java.util.Stack;
+
+import Exception.IncompatibleTypeException;
+import Symbol.Symbol;
+import Value.Value;
 
 public abstract class BinaryOperation implements Symbol {
 
