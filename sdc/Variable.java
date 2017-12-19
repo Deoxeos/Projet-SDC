@@ -28,7 +28,6 @@ public class Variable {
 	}
 	
 	public boolean compareName(String current) {
-		System.out.println("Dans comparename: " + this.nomVar.toLowerCase().equals(current.toLowerCase()) + " pour " + this.nomVar + " --> " + current);
 		return this.nomVar.toLowerCase().equals(current.toLowerCase());
 	}
 	

@@ -106,9 +106,7 @@ public class SDC {
 			}
 			
 			if (!addVar) {
-				System.out.println("update var " + token);
 				int id = getId("$" + token); 
-				System.out.println("id " + id);
 				Variable newVar = this.variables.get(id).updateVar(valueAdd); 
 				this.variables.remove(id); 
 				this.variables.add(newVar); 
@@ -127,7 +125,6 @@ public class SDC {
 			}
 			
 			token = this.variables.get(id).toString();
-			System.out.println("id " + id);
 		}
 
 		return token;
