@@ -29,6 +29,10 @@ public class BooleanValue extends Value {
 	public String toString() {
 		return this.value + "";
 	}
+	
+	public boolean isTrue() {
+		return this.value; 
+	}
 
 	public boolean parse(String s) {
 

@@ -22,7 +22,10 @@ public class Factory {
 		this.list.add("Symbol.ViewSymbol");
 		this.list.add("Symbol.QuitSymbol");
 		this.list.add("Symbol.ClearSymbol");
-
+		this.list.add("Symbol.IfSymbol");
+		this.list.add("Symbol.ElseSymbol");
+		this.list.add("Symbol.EndifSymbol");		
+		
 		this.list.add("Operation.AddOperation");
 		this.list.add("Operation.SubOperation");
 		this.list.add("Operation.DivOperation");

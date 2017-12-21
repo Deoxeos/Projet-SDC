@@ -24,5 +24,4 @@ public class SuperiorOperation extends BinaryOperation {
 		}
 		return nv1.superior(nv2);
 	}
-
 }

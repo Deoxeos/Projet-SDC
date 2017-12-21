@@ -18,13 +18,24 @@ public class SDC {
 	private Factory factory;
 	private Stack<Value> stack;
 	private ArrayList<Variable> variables;
-	private String previousToken; 
+	private String previousToken;
+	private static boolean ignoreNextInstruction;
+	private static String actualOp;
+	private static boolean inIf;
+	private static boolean inElse;
+	private static String waitedSymbol;
+	private static boolean canExecute;
 
 	public SDC() {
 		this.factory = new Factory();
 		this.stack = new Stack<Value>();
 		this.variables = new ArrayList<Variable>();
-		this.previousToken = ""; 
+		this.previousToken = "";
+		ignoreNextInstruction = false;
+		actualOp = "";
+		inIf = false;
+		inElse = false;
+		canExecute = true;
 	}
 
 	public void executeLine(String line) throws ShutdownException, InternalError, IncompatibleTypeException,
@@ -47,10 +58,18 @@ public class SDC {
 
 				if (s.parse(introduceVariable(token))) {
 					found = true;
+
 					@SuppressWarnings("unchecked")
 					Stack<Value> oldStack = (Stack<Value>) stack.clone();
 					try {
-						s.execute(this.stack);
+						if (token.toLowerCase().equals(waitedSymbol)) {
+							canExecute = true;
+						}
+
+						if (canExecute) {
+							s.execute(this.stack);
+						}
+
 					} catch (EmptyStackException e) {
 						// we might have read some symbols from the stack
 						// roll back
@@ -72,18 +91,16 @@ public class SDC {
 			}
 
 			if (!found) {
-			
-				
-				if(this.previousToken.equals("=>")){
+
+				if (this.previousToken.equals("=>")) {
 					createVariable(token);
 				} else {
-					throw new SymbolNotFoundException("the token " + token + " has not been recognized. Abort"); 
+					throw new SymbolNotFoundException("the token " + token + " has not been recognized. Abort");
 				}
-				
-				
+
 			}
-			
-		this.previousToken = token; 
+
+			this.previousToken = token;
 		}
 
 	}
@@ -98,19 +115,19 @@ public class SDC {
 
 			if (current.toString().equals("=>")) {
 				addVar = !isAlreadyIn(token);
-				
+
 			}
 
 			if (addVar) {
 				variables.add(new Variable(token, valueAdd));
 			}
-			
+
 			if (!addVar) {
-				int id = getId("$" + token); 
-				Variable newVar = this.variables.get(id).updateVar(valueAdd); 
-				this.variables.remove(id); 
-				this.variables.add(newVar); 
-				addVar = true; 
+				int id = getId("$" + token);
+				Variable newVar = this.variables.get(id).updateVar(valueAdd);
+				this.variables.remove(id);
+				this.variables.add(newVar);
+				addVar = true;
 			}
 		}
 	}
@@ -123,7 +140,7 @@ public class SDC {
 			if (id == -1) {
 				throw new VariableException("Illegal operation: unknown variable. Ignore last command line");
 			}
-			
+
 			token = this.variables.get(id).toString();
 		}
 
@@ -159,6 +176,32 @@ public class SDC {
 		}
 
 		return false;
+	}
+
+	public static void ifTraitementFalse(String string) {
+		waitedSymbol = "else";
+		canExecute = false;
+	}
+
+	public static void ifTraitementTrue() {
+		waitedSymbol = "endif";
+		canExecute = true;
+	}
+
+	public static void noOperation() {
+		waitedSymbol = "endif";
+		canExecute = false;
+	}
+
+	public static void elseTraitement() {
+		if (waitedSymbol.equals("endif")) {
+			canExecute = false; 
+		}
+
+		if (waitedSymbol.equals("else")) {
+			canExecute = true;
+			waitedSymbol = "endif";
+		}
 	}
 
 }
