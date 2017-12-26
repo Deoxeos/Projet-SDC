@@ -20,6 +20,7 @@ public class Factory {
 		this.list.add("Value.BooleanValue");
 		
 		this.list.add("Symbol.ViewSymbol");
+		this.list.add("Symbol.ViewVariableSymbol");
 		this.list.add("Symbol.QuitSymbol");
 		this.list.add("Symbol.ClearSymbol");
 		this.list.add("Symbol.IfSymbol");

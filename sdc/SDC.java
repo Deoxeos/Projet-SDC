@@ -17,24 +17,17 @@ public class SDC {
 
 	private Factory factory;
 	private Stack<Value> stack;
-	private ArrayList<Variable> variables;
+	private static ArrayList<Variable> variables;
 	private String previousToken;
-	private static boolean ignoreNextInstruction;
-	private static String actualOp;
-	private static boolean inIf;
-	private static boolean inElse;
 	private static String waitedSymbol;
 	private static boolean canExecute;
 
 	public SDC() {
 		this.factory = new Factory();
 		this.stack = new Stack<Value>();
-		this.variables = new ArrayList<Variable>();
+		variables = new ArrayList<Variable>();
 		this.previousToken = "";
-		ignoreNextInstruction = false;
-		actualOp = "";
-		inIf = false;
-		inElse = false;
+
 		canExecute = true;
 	}
 
@@ -83,18 +76,16 @@ public class SDC {
 								"Illegal operations: values must have the same type --- aborting last operations");
 					}
 					break;
-
 				}
-
 				// continue to the next symbol
-
 			}
 
-			if (!found) {
+			if (canExecute && !found) {
 
 				if (this.previousToken.equals("=>")) {
 					createVariable(token);
 				} else {
+					canExecute = true;
 					throw new SymbolNotFoundException("the token " + token + " has not been recognized. Abort");
 				}
 
@@ -106,7 +97,7 @@ public class SDC {
 	}
 
 	public void createVariable(String token) throws VariableException, SymbolNotFoundException {
-		boolean addVar = true;
+		boolean isIn = true;
 		Value current;
 		Value valueAdd;
 		if (!stack.isEmpty() && stack.size() > 1) {
@@ -114,26 +105,24 @@ public class SDC {
 			valueAdd = stack.pop();
 
 			if (current.toString().equals("=>")) {
-				addVar = !isAlreadyIn(token);
-
+				isIn = isAlreadyIn(token);
 			}
 
-			if (addVar) {
+			if (!isIn) {
 				variables.add(new Variable(token, valueAdd));
 			}
 
-			if (!addVar) {
+			if (isIn) {
 				int id = getId("$" + token);
-				Variable newVar = this.variables.get(id).updateVar(valueAdd);
-				this.variables.remove(id);
-				this.variables.add(newVar);
-				addVar = true;
+				Variable newVar = variables.get(id).updateVar(valueAdd);
+				variables.remove(id);
+				variables.add(newVar);
 			}
 		}
 	}
 
 	public String introduceVariable(String token) throws VariableException {
-		if (token.startsWith("$")) {
+		if (canExecute && token.startsWith("$")) {
 
 			Integer id = getId(token);
 
@@ -141,7 +130,7 @@ public class SDC {
 				throw new VariableException("Illegal operation: unknown variable. Ignore last command line");
 			}
 
-			token = this.variables.get(id).toString();
+			token = variables.get(id).chargeToken();
 		}
 
 		return token;
@@ -169,7 +158,7 @@ public class SDC {
 
 	public boolean isAlreadyIn(String search) {
 
-		for (Variable v : this.variables) {
+		for (Variable v : variables) {
 			if (v.compareName(search)) {
 				return true;
 			}
@@ -195,12 +184,18 @@ public class SDC {
 
 	public static void elseTraitement() {
 		if (waitedSymbol.equals("endif")) {
-			canExecute = false; 
+			canExecute = false;
 		}
 
 		if (waitedSymbol.equals("else")) {
 			canExecute = true;
 			waitedSymbol = "endif";
+		}
+	}
+
+	public static void viewVar() {
+		for (Variable current : variables) {
+			System.out.println(current.toString());
 		}
 	}
 

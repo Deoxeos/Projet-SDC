@@ -1,15 +1,14 @@
 package Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.*;
+import org.junit.Test;
 import Exception.IncompatibleTypeException;
 import Value.BooleanValue;
 
-class TestBooleanValue {
+public class TestBooleanValue {
 
 	@Test
-	void testBooleanValueEt() throws IncompatibleTypeException {
+	public void testBooleanValueEt() throws IncompatibleTypeException {
 		BooleanValue bv1 = new BooleanValue(false);
 		BooleanValue bv2 = new BooleanValue(true);
 		BooleanValue expected1 = new BooleanValue(false);
@@ -30,7 +29,7 @@ class TestBooleanValue {
 	}
 
 	@Test
-	void testBooleanValueOu() throws IncompatibleTypeException {
+	public void testBooleanValueOu() throws IncompatibleTypeException {
 		BooleanValue bv1 = new BooleanValue(false);
 		BooleanValue bv2 = new BooleanValue(true);
 		BooleanValue expected1 = new BooleanValue(true);
@@ -51,7 +50,7 @@ class TestBooleanValue {
 	}
 
 	@Test
-	void testBooleanValueNeg() throws IncompatibleTypeException {
+	public void testBooleanValueNeg() throws IncompatibleTypeException {
 		BooleanValue bv1 = new BooleanValue(false);
 		BooleanValue expected1 = new BooleanValue(true);
 

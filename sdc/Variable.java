@@ -13,14 +13,14 @@ public class Variable {
 	}
 	
 	public Variable updateVar(Value v) {
-		return new Variable(this.nomVar,v); 
+		return new Variable(this.nomVar.substring(1,this.nomVar.length()),v); 
 	}
 
 	public Variable() {
 	}
 
 	public String toString() {
-		return value.toString();
+		return this.nomVar + " contient " + value.toString();
 	}
 
 	public boolean compareValue(Value current) {
@@ -28,15 +28,15 @@ public class Variable {
 	}
 	
 	public boolean compareName(String current) {
+		
+		if(!current.startsWith("$")) {
+			current = "$" + current; 
+		}
+		
 		return this.nomVar.toLowerCase().equals(current.toLowerCase());
 	}
-	
-	/*public boolean compareNameSet(String current) {
-		System.out.println( "Dans comparenameset : " + this.nomVar.toLowerCase().equals(current.toLowerCase()) + " pour " + this.nomVar + " --> " + current);
-		return this.nomVar.toLowerCase().equals(current.toLowerCase());
-	}*/
-	
-	public Value giveValue() {
-		return this.value; 
+
+	public String chargeToken() {
+		return this.value.toString();
 	}
 }

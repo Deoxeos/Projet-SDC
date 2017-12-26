@@ -1,8 +1,7 @@
 package Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.*;
+import org.junit.Test;
 import Exception.IncompatibleTypeException;
 import Value.BooleanValue;
 import Value.IntegerValue;
@@ -11,7 +10,7 @@ import Value.RationnalValue;
 public class TestValueInteger {
 
 	@Test
-	void testIntegerValueParse() {
+	public void testIntegerValueParse() {
 
 		String s1 = "5";
 		IntegerValue iv1 = new IntegerValue();
